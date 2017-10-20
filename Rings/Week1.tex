@@ -1,0 +1,220 @@
+\documentclass{article}
+\title{Week 1}
+\author{emcd123}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+  
+\begin{document}
+
+\section{Basic Concepts}
+
+We study properties and structures of algebraic objects called \textit{rings}.\\
+One example of a \textit{ring} to always keep in mind is $\mathbb{Z}$,
+the ring of integers.
+\[\{...,-10,...,-2,-1,0,...,10,...,10^6\}\]
+
+\subsection{Some properties of $\mathbb{Z}$}
+
+Can \textit{add} integers to get another integer
+\[ a + b \in \mathbb{Z} \hspace{40px} \forall a,b \in \mathbb{Z}\]\\
+Addition in $\mathbb{Z}$ is \textit{associative}
+\begin{equation}
+	(a+b) + c = a + ( b + c ) = a + b + c \hspace{40px} \forall a,b,c \in \mathbb{Z}
+\end{equation} \\
+Addition in $\mathbb{Z}$ is \textit{commutative}
+\begin{equation}
+	a+b =  b + a \hspace{40px} \forall a,b \in \mathbb{Z}
+\end{equation} \\
+There is an identity for addition in $\mathbb{Z}$, namely $0$
+\begin{equation}
+	a + 0 = 0 + a = a \hspace{40px} \forall a \in \mathbb{Z}
+\end{equation}\\
+Each integer can be negated
+\[ -a \in \mathbb{Z} \hspace{30px} \forall a \in \mathbb{Z}\]\\
+And this is an \textit{additive inverse}
+\begin{equation}
+	a + (-a) = (-a) + a = 0
+\end{equation}\\
+Previous four points summarised as
+\begin{defn}
+	 $\mathbb{Z}$ is an abelian group under addition
+\end{defn}
+We can also \textit{multiply} two integers to get another integer
+$ab \in \mathbb{Z} \forall a,b \in \mathbb{Z}$ and multiplication is \textit{associative}
+\begin{equation}
+	a(bc) = (ab)c = abc \forall a,b,c \in \mathbb{Z}
+\end{equation}\\
+The two \textit{operations}, addition and multiplication, obey \textit{distributive laws}
+\begin{equation}
+\begin{rcases}
+	a(b + c) = ab + ac \\
+	(a + b)c = ac + bc  \\
+\end{rcases} \forall a,b,c \in \mathbb{Z}
+\end{equation}\\
+The above specific properties of $\mathbb{Z}$ can be generalized to \textit{axioms} that collectively define any (abstract ring)\\
+Before the formal definition,another useful and quite different example $M_2(\mathbb{R})$.\\
+\begin{exmp}
+	Let $M_2(\mathbb{R})$ denote the set of all 2x2 matrices with entries in $\mathbb{R}$, the real numbers\\
+	We can add elements of $M_2(\mathbb{R})$:
+	\begin{align}
+		\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}	+ 	\begin{pmatrix} \sqrt{2} & 3 \\ 5 & -7 \end{pmatrix} = \begin{pmatrix} (1 + \sqrt{2}) & 4 \\ 5 & -6 \end{pmatrix} \hspace{40px} \in M_2(\mathbb{R}) \\
+		a + b \in M_2(\mathbb{R}) \forall a,b \in M_2(\mathbb{R})
+	\end{align}
+\end{exmp}
+\begin{note}
+	Notice how we are doing addition in $\mathbb{R}$ to do addtion in $M_2(\mathbb{R})$
+\end{note}
+\begin{note}
+	Also nothing special about $M_2\mathbb{R}$ ,also possible for $M_3(\mathbb{R})$, $M_4(\mathbb{R})$, ..., $M_n(\mathbb{R})$
+\end{note}
+Matrix addition is \textit{associative} and \textit{commutative}\\
+\begin{exmp}
+\begin{align}
+		(\begin{pmatrix} a & b \\ c & d \end{pmatrix}	+ 	\begin{pmatrix} e & f \\ g & h \end{pmatrix}) + \begin{pmatrix} w & x \\ y & z \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} + (\begin{pmatrix} e & f \\ g & h \end{pmatrix}) + \begin{pmatrix} w & x \\ y & z \end{pmatrix}) \hspace{10px} \in M_2(\mathbb{R}) \\
+ \begin{pmatrix} a & b \\ c & d \end{pmatrix}	 + 	\begin{pmatrix} e & f \\ g & h \end{pmatrix} = \begin{pmatrix} e & f \\ g & h \end{pmatrix}	+ 	\begin{pmatrix} a & b \\ c & d \end{pmatrix}		\hspace{90px}
+\end{align}
+\end{exmp}
+
+\begin{note}
+Again these properties hold for $M_2\mathbb{R}$ because they hold in $\mathbb{R}$.
+\\
+$M_2\mathbb{R}$ has a zero namely the zero matrix.
+\\
+Every element of $M_2\mathbb{R}$ has an additive inverse, see $\mathbb{Z}$ example.\\
+\end{note}
+
+\begin{defn}[Basic Concepts]
+	$M_2\mathbb{R}$ is an \textit{abelian} group under matrix addition
+\end{defn}
+Just as with addition, $M_2\mathbb{R}$ has multipliction and is associative. And distributes over addition
+\begin{rem}
+	Matrix multiplication is \textbf{not} commutative
+\end{rem}
+\pagebreak
+\subsection{Axiomatic Definitions}
+
+An algebraic structure is a set on which(unary,binary,ternary,..) operations are defined, \& usually the operation/s obey laws(\textit{axioms})\\
+\begin{defn}
+	A \textbf{\textit{Group}} is a set $G$ with a binary operation,denoted $\cdot$, a unary operation\\
+	$x \in G \rightarrow x^-1 \in G$ such that\\
+		i) $a \cdot (b \cdot c) = (a \cdot b) \cdot c \hspace{40px} \forall a,b,c \in G$\\
+		ii) $a \cdot 1 = 1 \cdot a = a \hspace{60px} \forall a \in G$ \\
+		iii) $a \cdot a^-1 = a^-1 \cdot a = 1 \hspace{40px} \forall a \in G$
+\end{defn}
+\begin{rem} . \\
+	1) i) is the associative law\\
+	2) $1$ is the identity of $G$, this $1$ is unique\\
+	3) $x^-1$ is the inverse of $x$\\
+	4) The operation $\cdot$ is usually called \textit{multiplication} and is usually omitted i.e, $ab = a \cdot b$\\
+	5) If $\cdot$ is commutative then G is called \textit{abelian}\\
+	6) If we drop axioms ii),iii) and dont require inverses or identity then the structure is a \textit{•}{semigroup}\\
+	7) Not requiring inverses we have a \textit{monoid}\\
+\end{rem}
+
+\begin{defn}
+	A non-empty set $R$ is a \textbf{\textit{Ring}} equipped with two binary operations(addition and multiplication) connected by distributive laws\\
+	$\bullet$ $R$ is an abelian group wrt $+$\\
+	$\bullet$ $R$ is a semigroup wrt multiplication\\
+	$\bullet$ Distributivity:\\
+	\begin{equation}
+	\begin{rcases}
+		a(b + c) = ab + ac \\
+		(a + b)c = ac + bc 
+	\end{rcases} \forall a,b,c \in R
+	\end{equation}
+\end{defn}
+
+\begin{rem}
+See text for examples of rings, too lazy to type them
+\end{rem}
+
+\pagebreak
+\section{Elementary Properties of Rings}
+Here we study the basic properties of a ring
+
+\begin{lem}
+	if $R$ is a ring, then $\forall r,s \in R$
+	(i) $r0 = 0r = 0$//
+	(ii) $(-r)s = r(-s) = -rs$
+	(iii) $(-r)(-s) = rs$
+\end{lem}
+\begin{proof} . \\
+	i) $0 + 0 = 0$\\
+	Hence $r(0 + 0) = r) \\
+	\Rightarrow r0 + r0 $ by distributivity\\
+	$\Rightarrow r0 + r0 - r0 = r0 - r0 \\
+	\Rightarrow r0 + 0 = 0 \\
+	\Rightarrow r0 = 0 $\\
+	Similarly, $0r = 0$\\
+	ii) $(-r)s + rs = (-r + r)s$ \\
+	$= 0s $\\
+	$= 0$ \\
+	Hence $(-r)s$ is the additive inverse of rs \\
+	iii)$
+	(-r)(-s) + (-rs) \\
+	=(-r)(-s) + r(-s) $ by ii)$ \\
+	= (-r + r)(-s) $ distributivity$ \\
+	= o(-s) = 0$ \\
+	Hence, $(-r)(-s) = -(-rs) = rs$\\
+\end{proof}
+
+\subsection{Special Kinds of Rings}
+$\bullet$ A ring $R$ is commutative if $ab = ba \forall a,b \in R$\\
+$\bullet$ A ring $R$ has \textit{multiplicative identity} if $\exists$ element $ 1 \in R$ such that $1r = r1 = r \forall r \in R$\\
+$\bullet$ The multiplicative identity is unique: if $e$ is identity too then $1e = 1$ but $1e = e$ since $1$ is identity. So $1 = e$
+
+\begin{defn}
+An \textit{\textbf{Integral Domain}} is a commutative ring with $1(\not= 0)$ and no zero-divisors
+\begin{note}
+$1 = 0$ in a ring $R \leftrightarrow R = \{0\}$
+\end{note}
+\end{defn}
+\begin{exmp}
+\[\mathbb{Z}, \mathbb{R}, \mathbb{Q}, \mathbb{C}\] are all integral domains. $M_n(\mathbb{C})$ is not an integral domain
+\end{exmp}
+\begin{lem}
+Let $R$ be an integral domain, $a \in R \setminus \{0\}$, and $x,y \in R$\\
+Then \begin{equation}
+	ax = ay \Rightarrow x = y
+\end{equation}
+The cancellation laws for multiplication in integral domains
+\end{lem}
+
+\begin{proof}
+
+\begin{align}
+	ax &= ay \\
+	\Rightarrow ax - ay &= 0 \\
+	\Rightarrow a(x - y) &= 0 \\
+	\Rightarrow x - y &= 0 \\
+	\Rightarrow x &= y\\
+\end{align}
+(15) because 'a' is not a zer0-divisor
+\end{proof}
+\begin{defn}
+A \textbf{\textit{Field}} is a commutative ring in which the set of non-zero elements i a group under multiplication
+\end{defn}
+$\bullet$ So if $F$ is a field then $\exists 1 \in F$ such that $1x = x \forall x \in F \setminus \{0\} $, Since $1 \cdot 0 = 0$ by an earlier Lemma $1$ really is the multiplicative identity of $F$\\
+\hspace*{10px} $\bullet$ Also for each $a \in F \setminus \{0\},\\ \exists a^-1 \in F \setminus \{0\}$ such that $aa^-1 = 1$\\
+\hspace*{10px} $\bullet$ Every field is an integral domain. For if $a \in F \setminus \{0\}, \exists a^-1 \in F \setminus \{0\}\\
+$such that$ab = 0 then b = 1b = a^-1(ab) = a^1 \cdot 0 = 0$
+\end{document}
